@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+$font-family-base: 'Roboto', sans-serif;
+$font-size-base: 1.3rem;
+
+@import "bootstrap/scss/bootstrap.scss";
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text-multi-color {
+  background-image: linear-gradient(to left, violet, indigo, green, blue, orange, red);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
