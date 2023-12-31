@@ -15,7 +15,7 @@ function BreakControl(props: any) {
   let breakLength = useAppSelector(getTimerBreakLength)
 
   return (
-    <div className="text-center">
+    <div className="text-warning text-center">
       <div id="break-label">Break Length</div>
 
       <button

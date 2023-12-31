@@ -14,6 +14,7 @@ import {
   resetTimer,
   toggleAudio,
   countdown,
+  getTimerType,
 } from "./timerSlice"
 import { ThunkDispatch } from "@reduxjs/toolkit"
 
@@ -41,7 +42,7 @@ function StartStopButton(props: any) {
     return (
       <button
         id="start_stop"
-        className="btn border-0 bg-transparent me-2"
+        className="btn border-0 bg-transparent me-3"
         onClick={() => stopCountdown(dispatch)}
       >
         <FontAwesomeIcon icon={faPause} size="lg" />
@@ -52,7 +53,7 @@ function StartStopButton(props: any) {
   return (
     <button
       id="start_stop"
-      className="btn border-0 bg-transparent me-2"
+      className="btn border-0 bg-transparent me-3"
       onClick={() => {
         dispatch(toggleTimer())
         startCountdown(dispatch)
@@ -65,14 +66,19 @@ function StartStopButton(props: any) {
 
 function TimerControl(props: any) {
   const dispatch = useAppDispatch()
-  const countdown = useAppSelector(getTimerCountdown)
-  const countdownType = useAppSelector(getTimerCountdownType)
+  let type = useAppSelector(getTimerType)
+  let countdown = useAppSelector(getTimerCountdown)
+  let countdownType = useAppSelector(getTimerCountdownType)
+  let className = type === timerType.session ? "text-info" : "text-warning"
 
   return (
     <div className="text-center">
       <div>
         <div
-          className="d-inline-block border border-1 border-secondary bg-dark text-white p-3 rounded-3 my-3"
+          className={
+            "d-inline-block border border-1 border-secondary bg-dark p-3 rounded-3 my-3 " +
+            className
+          }
           style={{ minWidth: 150 }}
         >
           <div id="timer-label" className="h3 mb-2">
@@ -88,7 +94,7 @@ function TimerControl(props: any) {
 
       <button
         id="reset"
-        className="btn border-0 bg-transparent me-2"
+        className="btn border-0 bg-transparent"
         onClick={() => dispatch(resetTimer())}
       >
         <FontAwesomeIcon icon={faRefresh} size="lg" />

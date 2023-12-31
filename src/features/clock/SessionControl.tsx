@@ -15,19 +15,16 @@ function SessionControl(props: any) {
   let sessionLength = useAppSelector(getTimerSessionLength)
 
   return (
-    <div className="text-center">
+    <div className="text-info text-center">
       <div id="session-label">Session Length</div>
 
       <button
         id="session-decrement"
         className="btn border-0 bg-transparent me-2"
         value="-"
+        onClick={() => dispatch(decrementSessionLength())}
       >
-        <FontAwesomeIcon
-          icon={faMinus}
-          size="lg"
-          onClick={() => dispatch(decrementSessionLength())}
-        />
+        <FontAwesomeIcon icon={faMinus} size="lg" />
       </button>
       <div id="session-length" className="d-inline-block me-2">
         {sessionLength}
